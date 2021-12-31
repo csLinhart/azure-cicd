@@ -1,3 +1,5 @@
+[![Python application test with Github Actions](https://github.com/csLinhart/udacity-azure-2/actions/workflows/python-app.yml/badge.svg)](https://github.com/csLinhart/udacity-azure-2/actions/workflows/python-app.yml)
+
 # Overview
 
 This project has been created during the [Azure DevOps Nanodegree on Udacity](https://www.udacity.com/course/cloud-devops-using-microsoft-azure-nanodegree--nd082).
@@ -27,54 +29,55 @@ Azure CD
 
 ## Set up Azure Cloud Shell
 
-### Pair the SSH keys
+### Create SSH keys
 
-Open the Azure shell and type:
+Launch an Azure Cloud Shell environment and create ssh-keys:
 
 ```
 ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub
 ```
 
-The id_rsa.pub file contains the key that needs to be copy and paste into GitHub.
+The id_rsa.pub file contains the key that needs to be uploaded to your GitHub account.
 (GitHub > Settings > SSH and GPG keys > Paste > Add the key).
 
-Then you can clone the repository from the Azure Shell without typing your password.
+Then you can clone repositories of this Github account from the Azure envoronment without a password.
 
 ```
-git clone git@github.com:acouprie/udacity-azure-project2.git
+git clone git@github.com:csLinhart/udacity-azure-2.git
 ```
 
-![Azure project cloned](https://github.com/acouprie/udacity-azure-project2/blob/main/screenshots/azure-ssh-clone.png)
+![Project cloned](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/git-clone.PNG)
 
 ### Create a virtual environment
 
 ```
-python3 -m venv ~/.udacity-azure-project2
-source ~/.udacity-azure-project2/bin/activate
+python3 -m venv ~/.udacity-azure-2
+source ~/.udacity-azure-2/bin/activate
 ```
 
 ### Install and run
 
 ```
 make all
-az webapp up -n udacity-azure-project2 -l eastus --sku B1
+az webapp up -n flask-ml-service-CL-udacity -l southcentralus --sku B1
 ```
 
-Your `make all` output should look like this:
+The `make all` command should deliver this output:
 
-![make all](https://github.com/acouprie/udacity-azure-project2/blob/main/screenshots/make_all.png)
+![make all 1](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/make-all1.PNG)
+![make all 2](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/make-all2.PNG)
 
-The `az webapp up ...` command will create a resource group that contains your App Service, something like this:
+`az webapp up ...` creates a resource group with the App Service and the App Service plan:
 
-![Azure Portal](https://github.com/acouprie/udacity-azure-project2/blob/main/screenshots/azure_portal.png)
+![Azure Portal](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/portal.PNG)
 
-/!\ In your case, `udacity-azure-project2` is likely taken, you have to put another name. Note also that with my subscription, I was only able to create one web app by location.
-Following previous remark, modify the file `make_predict_azure_app.sh` line `-X POST https://udacity-azure-project2.azurewebsites.net:$PORT/predict`. You have to replace the `udacity-azure-project2` by the name of your application.
+Make sure to select a unique name for your app service.
+In `make_predict_azure_app.sh`, in `-X POST https://<app-name>.azurewebsites.net:$PORT/predict`, replace <app-name> with the the name of your application.
 
-If you go to https://<your-adress>.azurewebsites.net, you should be able to see the following:
+Browse to https://<your-adress>.azurewebsites.net:
 
-![Azure project running](https://github.com/acouprie/udacity-azure-project2/blob/main/screenshots/application_running.png)
+![Sklearn](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/sklearn.PNG)
 
 ## Configure GitHub Actions
 
@@ -82,7 +85,7 @@ If you go to https://<your-adress>.azurewebsites.net, you should be able to see 
 
 GitHub > Actions > set up a workflow yourself
 
-Copy the following the replace the default template:
+Replace the default template with:
 
 ```
 name: Python application test with Github Actions
@@ -111,40 +114,37 @@ jobs:
         make test
 ```
 
-After commiting, your build should be green. In details, it should look like this:
+Commit this and run the Action:
 
-![GitHub Actions passed](https://github.com/acouprie/udacity-azure-project2/blob/main/screenshots/github_actions_passed.png)
+![GitHub Actions](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/github-actions.PNG)
 
-## Configure Azure Pipeline
+## Set up Azure Pipelines
 
-Best way is to follow the official [Microsot documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
+Official [Microsot documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
 
-![Azure Pipeline](https://github.com/acouprie/udacity-azure-project2/blob/main/screenshots/azure_pipeline.png)
+![Azure Deployment](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/deployment.PNG)
 
-## Checking the application
+## Check the application
 
-The application is contacted from the `make_predict_azure_app.sh` file that return the prediction.
+Run the bash scritp `make_predict_azure_app.sh`.
 
-![Prediction](https://github.com/acouprie/udacity-azure-project2/blob/main/screenshots/prediction.png)
+![Prediction](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/prediction.png)
 
 ### Access the logs
 
-Use the following command to display the logs of the server:
+Inspect the logs from your running application here:
 
 ```
-az webapp log tail -g acouprie_rg_Linux_eastus -n udacity-azure-project2
+https://<app-name>.scm.azurewebsites.net/api/logs/docker
 ```
 
-Where -g is the resource group where your App Service is stored and -n is the actual App Service name.
 
-![Logs](https://github.com/acouprie/udacity-azure-project2/blob/main/screenshots/logs.png)
+![Logs](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/docker-log.png)
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+Set up different branches for different environments, e.g. Dev, Staging and Production. This will help to to test the latest code without having an impact on the Prod environment.
 
 ## Demo 
 
 <TODO: Add link Screencast on YouTube>
-
-[![Python application test with Github Actions](https://github.com/csLinhart/udacity-azure-2/actions/workflows/python-app.yml/badge.svg)](https://github.com/csLinhart/udacity-azure-2/actions/workflows/python-app.yml)
