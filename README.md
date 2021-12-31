@@ -126,7 +126,7 @@ Official [Microsoft Documentation](https://docs.microsoft.com/en-us/azure/devops
 
 Run the bash scritp `make_predict_azure_app.sh`.
 
-![Prediction](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/prediction.png)
+![Prediction](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/prediction.PNG)
 
 ### Access the logs
 
