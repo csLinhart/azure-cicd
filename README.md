@@ -73,9 +73,9 @@ The `make all` command should deliver this output:
 ![Azure Portal](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/portal.PNG)
 
 Make sure to select a unique name for your app service.
-In `make_predict_azure_app.sh`, in `-X POST https://<app-name>.azurewebsites.net:$PORT/predict`, replace <app-name> with the the name of your application.
+In `make_predict_azure_app.sh`, in `-X POST https://<app-name>.azurewebsites.net:$PORT/predict`, replace `<app-name>` with the the name of your application.
 
-Browse to https://<your-adress>.azurewebsites.net:
+Browse to https://`<your-adress>`.azurewebsites.net:
 
 ![Sklearn](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/sklearn.PNG)
 
@@ -120,7 +120,7 @@ Commit this and run the Action:
 
 ## Set up Azure Pipelines
 
-Official [Microsot documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
+Official [Microsoft Documentation](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
 
 ![Azure Deployment](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/deployment.PNG)
 
@@ -139,7 +139,7 @@ https://<app-name>.scm.azurewebsites.net/api/logs/docker
 ```
 
 
-![Logs](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/docker-log.png)
+![Logs](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/docker-log.PNG)
 
 ## Enhancements
 
