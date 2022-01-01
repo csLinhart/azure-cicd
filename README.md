@@ -139,6 +139,21 @@ https://<app-name>.scm.azurewebsites.net/api/logs/docker
 
 ![Logs](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/docker-log.PNG)
 
+### Locust
+
+Install and run locust:
+
+```
+pip install locust
+locust
+```
+
+Go to http://localhost:8089/ and enter the URL of your App Service.
+
+![Locust Main](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/locust1.PNG)
+
+![Locust Running](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/locust2.PNG)
+
 ## Enhancements
 
 Set up different branches for different environments, e.g. Dev, Staging and Production. This will help to to test the latest code without having an impact on the Prod environment.
