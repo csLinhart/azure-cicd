@@ -150,9 +150,9 @@ locust
 
 Go to http://localhost:8089/ and enter the URL of your App Service.
 
-![Locust Main](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/locust1.PNG)
+![Locust 1](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/locust1.PNG)
 
-![Locust Running](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/locust2.PNG)
+![Locust 2](https://github.com/csLinhart/udacity-azure-2/blob/master/Screenshots/locust2.png)
 
 ## Enhancements
 
