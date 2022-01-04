@@ -158,6 +158,3 @@ Go to http://localhost:8089/ and enter the URL of your App Service.
 
 Set up different branches for different environments, e.g. Dev, Staging and Production. This will help to to test the latest code without having an impact on the Prod environment.
 
-## Demo 
-
-https://www.youtube.com/watch?v=gzhuNKoEsEE
