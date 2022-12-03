@@ -7,7 +7,6 @@ In this project, you will build a Github repository from scratch and create a sc
 ## Project Plan
 
 * [Trello Board] (https://trello.com/b/3DjXZVrv/udacity-azure-project-2)
-* [Spreadsheet] (https://docs.google.com/spreadsheets/d/1qK27SxDIMCBIy7_c-t23Pbr4ey-1wDNjiXlEsZRy9lw/edit?usp=sharing)
 
 ## Instructions
 
